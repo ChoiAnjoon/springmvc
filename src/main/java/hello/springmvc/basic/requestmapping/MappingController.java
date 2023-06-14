@@ -51,8 +51,7 @@ public class MappingController {
      * PathVariable 사용 다중
      */
     @GetMapping("/mapping/users/{userId}/orders/{orderId}")
-    public String mappingPath(@PathVariable String userId, @PathVariable Long
-            orderId) {
+    public String mappingPath(@PathVariable String userId, @PathVariable Long orderId) {
         log.info("mappingPath userId={}, orderId={}", userId, orderId);
         return "ok";
     }
@@ -65,6 +64,7 @@ public class MappingController {
      * params="mode!=debug" (! = )
      * params = {"mode=debug","data=good"}
      */
+    // 이거 잘 안씀
     @GetMapping(value = "/mapping-param", params = "mode=debug")
     public String mappingParam() {
         log.info("mappingParam");
@@ -78,6 +78,7 @@ public class MappingController {
      * headers="mode=debug"
      * headers="mode!=debug" (! = )
      */
+    // 이것도 잘 안쓰는 것 같음
     @GetMapping(value = "/mapping-header", headers = "mode=debug")
     public String mappingHeader() {
         log.info("mappingHeader");
@@ -93,6 +94,7 @@ public class MappingController {
      * consumes="*\/*"
      * MediaType.APPLICATION_JSON_VALUE
      */
+    // 요청 header의 Content-Type이 application/json일 때만 호출 됨
     @PostMapping(value = "/mapping-consume", consumes = MediaType.APPLICATION_JSON_VALUE)
     public String mappingConsumes() {
         log.info("mappingConsumes");
@@ -107,11 +109,11 @@ public class MappingController {
      * produces = "text/*"
      * produces = "*\/*"
      */
+    // 요청 header의 accept가 text/html을 받을 수 있을때 호출 가능 (없으면 호출 불가)
     @PostMapping(value = "/mapping-produce", produces = MediaType.TEXT_HTML_VALUE)
     public String mappingProduces() {
         log.info("mappingProduces");
         return "ok";
     }
-
 
 }
