@@ -54,4 +54,5 @@ public class ResponseBodyController {
 
         return helloData;
     }
+    // API만들때 보통 이런 스타일 많이 사용한다.
 }

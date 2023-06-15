@@ -71,6 +71,6 @@ public class RequestBodyJsonController {
         log.info("username ={}, age={}", data.getUsername(), data.getAge());
         return data;
     }
-    // 반환을 객체로 할 수 도 있다.
+    // 반환을 객체로 할 수 도 있다. (HelloData 객체로 반환)
     // json이 -> 객체가 되고 --> 다시 객체가 json으로 나감
 }

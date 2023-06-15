@@ -93,6 +93,9 @@ public class RequestParamController {
 //        helloData.setUsername(username);
 //        helloData.setAge(age);
 //
+//        log.info("username={}, age={}", helloData.getUsername(), helloData.getAge());
+//        log.info("helloData={}", helloData);
+//
 //        return "ok";
     // 원래는 이런식으로 했다면 밑에와 같이 바꿀 수 있다. 코드가 정말 간소화 된다.
 
