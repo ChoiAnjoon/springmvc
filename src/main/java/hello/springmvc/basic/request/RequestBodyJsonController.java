@@ -34,6 +34,7 @@ public class RequestBodyJsonController {
 
         log.info("messageBody={}", messageBody);
         HelloData helloData = objectMapper.readValue(messageBody, HelloData.class);
+        // objectMapper -> 문자로 된 json을 자바 객체로 변환
         log.info("username ={}, age={}", helloData.getUsername(), helloData.getAge());
         response.getWriter().write("ok");
     }
@@ -70,7 +71,9 @@ public class RequestBodyJsonController {
     public HelloData requestBodyJsonV5(@RequestBody HelloData data) throws IOException {
         log.info("username ={}, age={}", data.getUsername(), data.getAge());
         return data;
+
+        // 반환을 객체로 할 수 도 있다. (HelloData 객체로 반환)
+        // json이 -> 객체가 되고 --> 다시 그 바뀐 객체가 HttpConverter에 의해 응답으로 return 될때 json으로 반환
     }
-    // 반환을 객체로 할 수 도 있다. (HelloData 객체로 반환)
-    // json이 -> 객체가 되고 --> 다시 객체가 json으로 나감
+
 }
