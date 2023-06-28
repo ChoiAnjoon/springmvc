@@ -39,7 +39,7 @@ public class RequestParamController {
     @ResponseBody
     @RequestMapping("/request-param-v3")
     public String requestParamV3(
-            @RequestParam String username,
+            @RequestParam String username, // 요청파라미터와 같은 name이어야 한다.
             @RequestParam int age) {
 
         log.info("username={}, age={}", username, age);
@@ -48,7 +48,7 @@ public class RequestParamController {
 
     @ResponseBody
     @RequestMapping("/request-param-v4")
-    public String requestParamV4(String username, int age) {
+    public String requestParamV4(String username, int age) { // 요청파라미터와 같은 name이어야 한다.
 
         log.info("username={}, age={}", username, age);
         return "ok";
@@ -61,7 +61,7 @@ public class RequestParamController {
     @RequestMapping("/request-param-required")
     public String requestParamRequired(
             @RequestParam(required = true) String username, // 무조껀 username이 파라미터로 들어와야함
-            @RequestParam(required = false) Integer age) { // null이 들어갈수 있는 Integer로 형을 fix해 주어야함
+            @RequestParam(required = false) Integer age) { // age는 파라미터로 안들어와도됨 (null이 들어갈수 있는 Integer로 형을 fix해 주어야함)
 
         log.info("username={}, age={}", username, age);
         return "ok";
