@@ -110,6 +110,7 @@ public class MappingController {
      * produces = "*\/*"
      */
     // 요청 header의 accept가 text/html을 받을 수 있을때 호출 가능 (없으면 호출 불가)
+    // accept -> 나는 이런 정보를 받아들일 수 있다는 클라이언트의 정보
     @PostMapping(value = "/mapping-produce", produces = MediaType.TEXT_HTML_VALUE)
     public String mappingProduces() {
         log.info("mappingProduces");
