@@ -1,10 +1,7 @@
 package hello.springmvc.basic.request;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StreamUtils;
@@ -42,12 +39,27 @@ public class RequestBodyStreamController {
 
     @PostMapping("/request-body-string-v3")
     public HttpEntity<String> requestBodyStringV3(HttpEntity<String> httpEntity) throws IOException {
+
         String messageBody = httpEntity.getBody();
+        HttpHeaders headers = httpEntity.getHeaders();
+        // Http Header에 대한 정보도 얻어올수 있다.
         log.info("messageBody={}", messageBody);
         return new HttpEntity<>("ok");
     }
 
-    // 삽중요
+//    @PostMapping("/request-body-string-v3")
+    public HttpEntity<String> requestBodyStringV3_plus(RequestEntity<String> httpEntity) throws IOException {
+
+        // HttpEntity를 상속받은 RequestEntity를 사용할 수 있다. 기존에 비해 몇몇의 부가기능 제공
+
+        String messageBody = httpEntity.getBody();
+        log.info("messageBody={}", messageBody);
+
+        return new ResponseEntity<>("ok", HttpStatus.CREATED);
+        // HttpEntity를 상속 받은 ResponseEntity는 Http상태 코드를 포함할 수 있다.
+    }
+
+    // 제일 간단한 방법 @ResponseBody, @RequestBody
     @ResponseBody
     @PostMapping("/request-body-string-v4")
     public String requestBodyStringV4(@RequestBody String messageBody) throws IOException {
